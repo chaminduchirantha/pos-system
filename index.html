@@ -6,60 +6,325 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
     <link rel="stylesheet" href="Asset/lib/fontawasome/fontawesome-free-6.7.2-web/css/all.css">
     <link rel="stylesheet" href="Asset/lib/normalize.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Mono:ital,wght@0,200..800;1,200..800&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Quicksand:wght@300..700&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous"></script>
-
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
-
+    <nav class="navbar navbar-expand-lg bg-body-tertiary custom-menu-bar">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">Pos System<i class="fa-solid fa-utensils"></i>
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <a class="navbar-brand tech" href="#"><span class="zone">M.C.C Resturent Pos System</span></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarNavDropdown">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Home<i class="fa-solid fa-house"></i></a>
+            <div class="collapse navbar-collapse  d-flex justify-content-center mybar" id="navbarNav">
+                <ul class="navbar-nav nav-menu d-flex gap-2 ">
+                    <li class="nav-item navs">
+                        <a class="nav-link active" aria-current="page" href="#">Home</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Customer<i class="fa-solid fa-user"></i></a>
+                    <li class="nav-item navs">
+                        <a class="nav-link active" aria-current="page" href="#">Customer</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Item<i class="fa-solid fa-burger"></i></a>
+                    <li class="nav-item navs">
+                        <a class="nav-link active" aria-current="page" href="#">Item</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Purchase Order<i class="fa-solid fa-cart-plus"></i></a>
+                    <li class="nav-item item navs">
+                        <a class="nav-link active" aria-current="page" href="#">Perches Order</a>
                     </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Order Detail<i class="fa-solid fa-circle-info"></i></a>
+                    <li class="nav-item navs">
+                        <a class="nav-link active" aria-current="page" href="#">Sales</a>
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
 
-
-
-    <section>
-        <div>
+        <section class="container">
+            <div class="row  align-items-center" style="min-height: 80vh;">
+                <div class="col-md-6 d-flex justify-content-center homePage mb-3 mb-md-0">
+                    <div class="card cd cd custom-home-card" style="width: 48rem;">
+                        <div class="card-body">
+                            <h1 class="card-title cd-header custom-header">Experience the delight of our gourmet meals.</h1>
+                            <p class="card-text cd-sub-header custom-paragraph">We’re delighted to serve you moments brewed with care and flavors made with love!!.</p>
+                            <a><button type="button" class="btn btn-warning">Buy Now</button></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div>
-                <h1>Experience the delight of our gourmet meals.</h1>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis hic molestiae nisi quidem reiciendis sit. Assumenda corporis cum eum iusto, minus nihil officia, omnis quia quis rem rerum temporibus vel?</p>
+                <img src="Asset/image/flat-lay-table-full-delicious-food-arrangement.jpg" class="img-fluid custom-image" alt="Responsive image" width="500" height="600">
+            </div>
+        </section>
+
+
+
+        <section>
+            <div class="container mt-4">
+                <div class="row mb-3 text-center , bar">
+                    <h1>Customer</h1>
+                </div>
+                <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        ID , Name
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#">ID</a></li>
+                        <li><a class="dropdown-item" href="#">Name</a></li>
+                    </ul>
+                </div>
+
+                <br>
+
+                <div class="row">
+                    <div class="col-lg-6 col-md-12">
+                        <div class="card p-3 custom-Body ">
+                            <div class="card-body custom-card ">
+                                <h5 class="card-title text-center">Customer Details</h5>
+                                <br>
+                                <form>
+                                    <div class="mb-3">
+                                        <label for="id" class="form-label">Customer ID</label>
+                                        <input type="text" class="form-control" id="id" placeholder="">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="name" class="form-label">Customer Name</label>
+                                        <input type="text" class="form-control" id="name" placeholder="">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="address" class="form-label">Customer Address</label>
+                                        <input type="text" class="form-control" id="address" placeholder="">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="email" class="form-label">Customer Salary</label>
+                                        <input type="email" class="form-control" id="email" placeholder="">
+                                    </div>
+
+                                    <div class="mt-3">
+                                        <button type="button" class="btn btn-outline-primary">Save</button>
+                                        <button type="button" class="btn btn-outline-secondary">Update</button>
+                                        <button type="button" class="btn btn-outline-success">Clear</button>
+                                        <button type="button" class="btn btn-outline-danger">Delete</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-12">
+                        <div class="card my-4">
+                            <table class="table table-bordered custom-Table">
+                                <thead>
+                                <tr>
+                                    <th scope="col">ID</th>
+                                    <th scope="col">Name</th>
+                                    <th scope="col">Address</th>
+                                    <th scope="col">Salary</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tbody>
+                                <tr>
+                                    <th scope="row">----</th>
+                                    <td>----</td>
+                                    <td>----</td>
+                                    <td>----</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">----</th>
+                                    <td>----</td>
+                                    <td>----</td>
+                                    <td>----</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">----</th>
+                                    <td>----</td>
+                                    <td>----</td>
+                                    <td>----</td>
+                                </tr>
+
+                                <tr>
+                                    <th scope="row">----</th>
+                                    <td>----</td>
+                                    <td>----</td>
+                                    <td>----</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <section>
+            <div class="container mt-4">
+                <div class="row mb-3 text-center">
+                    <h1>Item</h1>
+                </div>
+                <div class="row">
+                    <div class="col-lg-6 col-md-12">
+                        <div class="card p-3 ">
+                            <div class="card-body">
+                                <h5 class="card-title text-center">Item Details</h5>
+                                <br>
+                                <form>
+                                    <div class="mb-3">
+                                        <label for="id" class="form-label">Item ID</label>
+                                        <input type="text" class="form-control" id="itemid" placeholder="C000">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="name" class="form-label">Item Name</label>
+                                        <input type="text" class="form-control" id="itemname" placeholder="">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="email" class="form-label">Price</label>
+                                        <input type="email" class="form-control" id="price" placeholder="">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="email" class="form-label">Quantity On Hand</label>
+                                        <input type="email" class="form-control" id="qty" placeholder="">
+                                    </div>
+
+                                    <div class="mt-3">
+                                        <button type="button" class="btn btn-outline-primary">Save</button>
+                                        <button type="button" class="btn btn-outline-secondary">Update</button>
+                                        <button type="button" class="btn btn-outline-success">Clear</button>
+                                        <button type="button" class="btn btn-outline-danger">Delete</button>
+                                    </div>
+
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-12">
+                        <div class="card my-4">
+                            <table class="table table-bordered">
+                                <thead>
+                                <tr>
+                                    <th scope="col">ItemID</th>
+                                    <th scope="col">ItemName</th>
+                                    <th scope="col">Price</th>
+                                    <th scope="col">Quantity</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <br>
+        <br>
+        <br>
+
+        <section class="container">
+            <div class="row g-3 justify-content-between d-flex " >
+                <!-- Invoice Details Card -->
+            <div class="card col-md-4 order-card">
+                <h3>Invoice Details</h3>
+                <form>
+                    <div class="mb-3">
+                        <label for="orderid" class="form-label">Order ID</label>
+                        <input type="text" class="form-control" id="orderid" placeholder="Enter ID" />
+                    </div>
+                    <div class="input-group d-flex mb-3 mt-3 justify-content-end">
+                        <input type="date" class="form-control" placeholder="date" aria-label="date" aria-describedby="basic-addon1">
+                    </div>
+                    <div class="mb-3 mt-3">
+                        <label for="customerId" class="form-label">Customer ID</label>
+                        <select class="form-select" id="customerId">
+                            <option selected disabled>Choose Customer ID</option>
+                            <option value="C001">C001</option>
+                            <option value="C002">C002</option>
+                            <option value="C003">C003</option>
+                        </select>
+                    </div>
+                    <a href="">
+                        <button type="button" class="btn btn-success">+ Add</button>
+                    </a>
+                </form>
             </div>
 
-            <div>
-                <button>
-                    <a href="#">Book Now</a>
-                </button>
+            <!-- Item Select Card -->
+            <div class="card col-md-4 order-card">
+                <h3>Item Select</h3>
+                <form>
+                    <div class="mb-3">
+                        <label for="itemCode" class="form-label">Item Code</label>
+                        <select class="form-select" id="itemCode">
+                            <option selected disabled>Choose Item Code</option>
+                            <option value="I001">---</option>
+                            <option value="I002">---</option>
+                            <option value="I003">---</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="description" class="form-label">Description</label>
+                        <input type="text" class="form-control" id="description" placeholder="Description" />
+                    </div>
+                    <div class="mb-3">
+                        <label for="unitPrice" class="form-label">Unit Price</label>
+                        <input type="number" class="form-control" id="unitPrice" placeholder="Enter Unit Price" />
+                    </div>
+                    <div class="mb-3">
+                        <label for="quantityOnHand" class="form-label">Qty On Hand</label>
+                        <input type="number" class="form-control" id="quantityOnHand" placeholder="Enter Quantity" />
+                    </div>
+                    <div class="mb-3">
+                        <label for="quantity" class="form-label">Quantity</label>
+                        <input type="number" class="form-control" id="quantity" placeholder="Enter Quantity" />
+                    </div>
+                    <a href="">
+                        <button type="button" class="btn btn-success">+ Add</button>
+                    </a>
+                </form>
             </div>
 
-            <div>
-                <img src="Asset/image/flat-lay-table-full-delicious-food-arrangement.jpg" width="600" height="400">
+            <div class="card col-md-4 summary">
+                <h4>Total: 0000Rs/=</h4>
+                <h5>Sub Total: 000Rs/=</h5>
+                <div class="mb-3 mt-3">
+                    <label for="discount" class="form-label">Discount</label>
+                    <input type="number" class="form-control" id="discount" placeholder="Enter Discount" />
+                </div>
+                <div class="mb-3">
+                    <label for="cash" class="form-label">Cash</label>
+                    <input type="number" class="form-control" id="cash" placeholder="Enter Cash" />
+                </div>
+                <button class="btn purchase-button btn-primary">Purchase</button>
             </div>
         </div>
     </section>
+
+
+    <table class="container table mt-5" >
+        <thead>
+        <tr>
+            <th>Item Code</th>
+            <th>Description</th>
+            <th>Unit Price</th>
+            <th>Qty</th>
+            <th>Total</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>---</td>
+            <td>---</td>
+            <td>---</td>
+            <td>---</td>
+            <td>---</td>
+        </tr>
+        </tbody>
+    </table>
+
+
+
 </body>
 </html>
