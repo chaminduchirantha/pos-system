@@ -9,6 +9,8 @@
 
 .custom-menu-bar{
     font-size: 1.4rem;
+    background-color: lightgreen;
+    height: 60px;
 }
 
 .custom-header{
