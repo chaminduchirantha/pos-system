@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
     <title>Restaurant Pos System</title>
@@ -12,7 +12,6 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous"></script>
     <nav class="navbar navbar-expand-lg bg-body-tertiary text-danger">
         <div class="container-fluid  custom-menu-bar">
             <a class="navbar-brand tech" href="#"><span class="zone">M.C.C Resturent Pos System</span></a>
@@ -22,26 +21,26 @@
             <div class="collapse navbar-collapse  d-flex justify-content-center mybar" id="navbarNav">
                 <ul class="navbar-nav nav-menu d-flex gap-2 ">
                     <li class="nav-item navs">
-                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                        <a class="nav-link active home-btn" aria-current="page" href="#home-content">Home</a>
                     </li>
                     <li class="nav-item navs">
-                        <a class="nav-link active" aria-current="page" href="#">Customer</a>
+                        <a class="nav-link active customer-btn" aria-current="page" href="#customer-content">Customer</a>
                     </li>
                     <li class="nav-item navs">
-                        <a class="nav-link active" aria-current="page" href="#">Item</a>
+                        <a class="nav-link active item-btn" aria-current="page" href="#">Item</a>
                     </li>
                     <li class="nav-item item navs">
-                        <a class="nav-link active" aria-current="page" href="#">Perches Order</a>
+                        <a class="nav-link active orders-btn" aria-current="page" href="#">Perches Order</a>
                     </li>
                     <li class="nav-item navs">
-                        <a class="nav-link active" aria-current="page" href="#">Sales</a>
+                        <a class="nav-link active order-detail-btn" aria-current="page" href="#">Sales</a>
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
 
-        <section class="container">
+        <section class="container" id="home-content">
             <div class="row  align-items-center" style="min-height: 80vh;">
                 <div class="col-md-6 d-flex justify-content-center homePage mb-3 mb-md-0">
                     <div class="card cd cd custom-home-card" style="width: 48rem;">
@@ -60,7 +59,7 @@
 
 
 
-        <section>
+        <section id="customer-content">
             <div class="container mt-4">
                 <div class="row mb-3 text-center , bar">
                     <h1>Customer</h1>
@@ -158,7 +157,7 @@
         </section>
 
 
-        <section>
+        <section id="items-content">
             <div class="container mt-4">
                 <div class="row mb-3 text-center">
                     <h1>Item</h1>
@@ -223,7 +222,7 @@
         <br>
         <br>
 
-        <section class="container">
+        <section class="container" id="order-content">
             <div class="row g-3 justify-content-between d-flex " >
                 <!-- Invoice Details Card -->
             <div class="card col-md-4 order-card">
@@ -325,6 +324,8 @@
     </table>
 
 
-
+    <script src="Asset/lib/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous"></script>
+    <script src="Asset/controller/controllerScript.js"></script>
 </body>
 </html>
