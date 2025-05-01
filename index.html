@@ -61,7 +61,7 @@
 
         <section id="customer-content">
             <div class="container mt-4">
-                <div class="row mb-3 text-center , bar">
+                <div class="row mb-3 text-center">
                     <h1>Customer</h1>
                 </div>
                 <div class="dropdown">
@@ -84,24 +84,24 @@
                                 <br>
                                 <form>
                                     <div class="mb-3">
-                                        <label for="id" class="form-label">Customer ID</label>
-                                        <input type="text" class="form-control" id="id" placeholder="">
+                                        <label for="customer-id" class="form-label">Customer ID</label>
+                                        <input type="text" class="form-control" id="customer-id" placeholder="">
                                     </div>
                                     <div class="mb-3">
-                                        <label for="name" class="form-label">Customer Name</label>
-                                        <input type="text" class="form-control" id="name" placeholder="">
+                                        <label for="customer-name" class="form-label">Customer Name</label>
+                                        <input type="text" class="form-control" id="customer-name" placeholder="">
                                     </div>
                                     <div class="mb-3">
-                                        <label for="address" class="form-label">Customer Address</label>
-                                        <input type="text" class="form-control" id="address" placeholder="">
+                                        <label for="customer-address" class="form-label">Customer Address</label>
+                                        <input type="text" class="form-control" id="customer-address" placeholder="">
                                     </div>
                                     <div class="mb-3">
-                                        <label for="email" class="form-label">Customer Salary</label>
-                                        <input type="email" class="form-control" id="email" placeholder="">
+                                        <label for="customer-email" class="form-label">Customer Salary</label>
+                                        <input type="email" class="form-control" id="customer-email" placeholder="">
                                     </div>
 
                                     <div class="mt-3">
-                                        <button type="button" class="btn btn-outline-primary">Save</button>
+                                        <button type="button" class="btn btn-outline-primary" id="customer-save">Save</button>
                                         <button type="button" class="btn btn-outline-secondary">Update</button>
                                         <button type="button" class="btn btn-outline-success">Clear</button>
                                         <button type="button" class="btn btn-outline-danger">Delete</button>
@@ -123,32 +123,6 @@
                                 </thead>
                                 <tbody>
                                 <tbody>
-                                <tr>
-                                    <th scope="row">----</th>
-                                    <td>----</td>
-                                    <td>----</td>
-                                    <td>----</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">----</th>
-                                    <td>----</td>
-                                    <td>----</td>
-                                    <td>----</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">----</th>
-                                    <td>----</td>
-                                    <td>----</td>
-                                    <td>----</td>
-                                </tr>
-
-                                <tr>
-                                    <th scope="row">----</th>
-                                    <td>----</td>
-                                    <td>----</td>
-                                    <td>----</td>
-                                </tr>
-                                </tbody>
                             </table>
                         </div>
                     </div>
@@ -158,36 +132,36 @@
 
 
         <section id="items-content">
-            <div class="container mt-4">
+            <div class="container mt-4 ">
                 <div class="row mb-3 text-center">
                     <h1>Item</h1>
                 </div>
                 <div class="row">
                     <div class="col-lg-6 col-md-12">
-                        <div class="card p-3 ">
-                            <div class="card-body">
+                        <div class="card p-3 custom-Body">
+                            <div class="card-body custom-card ">
                                 <h5 class="card-title text-center">Item Details</h5>
                                 <br>
                                 <form>
                                     <div class="mb-3">
-                                        <label for="id" class="form-label">Item ID</label>
-                                        <input type="text" class="form-control" id="itemid" placeholder="C000">
+                                        <label for="item-id" class="form-label">Item ID</label>
+                                        <input type="text" class="form-control" id="item-id" placeholder="C000">
                                     </div>
                                     <div class="mb-3">
-                                        <label for="name" class="form-label">Item Name</label>
-                                        <input type="text" class="form-control" id="itemname" placeholder="">
+                                        <label for="item-name" class="form-label">Item Name</label>
+                                        <input type="text" class="form-control" id="item-name" placeholder="">
                                     </div>
                                     <div class="mb-3">
-                                        <label for="email" class="form-label">Price</label>
-                                        <input type="email" class="form-control" id="price" placeholder="">
+                                        <label for="item-price" class="form-label">Price</label>
+                                        <input type="email" class="form-control" id="item-price" placeholder="">
                                     </div>
                                     <div class="mb-3">
-                                        <label for="email" class="form-label">Quantity On Hand</label>
-                                        <input type="email" class="form-control" id="qty" placeholder="">
+                                        <label for="item-qty" class="form-label">Quantity On Hand</label>
+                                        <input type="email" class="form-control" id="item-qty" placeholder="">
                                     </div>
 
                                     <div class="mt-3">
-                                        <button type="button" class="btn btn-outline-primary">Save</button>
+                                        <button type="button" class="btn btn-outline-primary" id="item-Save">Save</button>
                                         <button type="button" class="btn btn-outline-secondary">Update</button>
                                         <button type="button" class="btn btn-outline-success">Clear</button>
                                         <button type="button" class="btn btn-outline-danger">Delete</button>
@@ -209,7 +183,6 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-
                                 </tbody>
                             </table>
                         </div>
@@ -223,9 +196,13 @@
         <br>
 
         <section class="container" id="order-content">
+            <div class="row mb-3 text-center">
+                <h1>Order Detail</h1>
+            </div>
+
             <div class="row g-3 justify-content-between d-flex " >
                 <!-- Invoice Details Card -->
-            <div class="card col-md-4 order-card">
+            <div class="card col-md-4 order-card custom-Body custom-card">
                 <h3>Invoice Details</h3>
                 <form>
                     <div class="mb-3">
@@ -251,10 +228,10 @@
             </div>
 
             <!-- Item Select Card -->
-            <div class="card col-md-4 order-card">
+            <div class="card col-md-4 order-card custom-Body custom-card custom-item-select fa-g-1">
                 <h3>Item Select</h3>
                 <form>
-                    <div class="mb-3">
+                    <div class="mb-3 ">
                         <label for="itemCode" class="form-label">Item Code</label>
                         <select class="form-select" id="itemCode">
                             <option selected disabled>Choose Item Code</option>
@@ -285,7 +262,7 @@
                 </form>
             </div>
 
-            <div class="card col-md-4 summary">
+            <div class="card col-md-4 summary custom-Body custom-card">
                 <h4>Total: 0000Rs/=</h4>
                 <h5>Sub Total: 000Rs/=</h5>
                 <div class="mb-3 mt-3">
@@ -301,27 +278,6 @@
         </div>
     </section>
 
-
-    <table class="container table mt-5" >
-        <thead>
-        <tr>
-            <th>Item Code</th>
-            <th>Description</th>
-            <th>Unit Price</th>
-            <th>Qty</th>
-            <th>Total</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-            <td>---</td>
-            <td>---</td>
-            <td>---</td>
-            <td>---</td>
-            <td>---</td>
-        </tr>
-        </tbody>
-    </table>
 
 
     <script src="Asset/lib/jquery-3.7.1.min.js"></script>
