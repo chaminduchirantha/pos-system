@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
+<html lang="en" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html"
+      xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
     <title>Restaurant Pos System</title>
@@ -14,23 +15,23 @@
 <body>
     <nav class="navbar navbar-expand-lg bg-body-tertiary text-danger">
         <div class="container-fluid  custom-menu-bar">
-            <a class="navbar-brand tech" href="#"><span class="zone">M.C.C Resturent Pos System</span></a>
+            <a class="navbar-brand tech" href="#"><span><i class="fa-solid fa-utensils"></i>Resturent Pos System</span></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse  d-flex justify-content-center mybar" id="navbarNav">
                 <ul class="navbar-nav nav-menu d-flex gap-2 ">
                     <li class="nav-item navs">
-                        <a class="nav-link active home-btn" aria-current="page" href="#home-content">Home</a>
+                        <a class="nav-link active home-btn" aria-current="page" href="#home-content"><i class="fa-solid fa-house"></i>Home</a>
                     </li>
                     <li class="nav-item navs">
-                        <a class="nav-link active customer-btn" aria-current="page" href="#customer-content">Customer</a>
+                        <a class="nav-link active customer-btn" aria-current="page" href="#customer-content"><i class="fa-solid fa-user"></i>Customer</a>
                     </li>
                     <li class="nav-item navs">
-                        <a class="nav-link active item-btn" aria-current="page" href="#">Item</a>
+                        <a class="nav-link active item-btn" aria-current="page" href="#"><i class="fa-solid fa-burger"></i>Item</a>
                     </li>
                     <li class="nav-item item navs">
-                        <a class="nav-link active orders-btn" aria-current="page" href="#">Perches Order</a>
+                        <a class="nav-link active orders-btn" aria-current="page" href="#"><i class="fa-solid fa-cart-shopping"></i>Perches Order</a>
                     </li>
                     <li class="nav-item navs">
                         <a class="nav-link active order-detail-btn" aria-current="page" href="#">Sales</a>
@@ -62,57 +63,41 @@
         <section id="customer-content">
             <div class="container mt-4">
                 <div class="row mb-3 text-center">
-                    <h1>Customer</h1>
+                   <h1 style="color:wheat"> <i class="fa-solid fa-users" style="color: wheat; margin: 15px"></i>Customer</h1>
                 </div>
-                <div class="dropdown">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        ID , Name
-                    </button>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">ID</a></li>
-                        <li><a class="dropdown-item" href="#">Name</a></li>
-                    </ul>
-                </div>
-
-                <br>
 
                 <div class="row">
-                    <div class="col-lg-6 col-md-12">
-                        <div class="card p-3 custom-Body ">
-                            <div class="card-body custom-card ">
-                                <h5 class="card-title text-center">Customer Details</h5>
-                                <br>
-                                <form>
-                                    <div class="mb-3">
-                                        <label for="customer-id" class="form-label">Customer ID</label>
-                                        <input type="text" class="form-control" id="customer-id" placeholder="">
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="customer-name" class="form-label">Customer Name</label>
-                                        <input type="text" class="form-control" id="customer-name" placeholder="">
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="customer-address" class="form-label">Customer Address</label>
-                                        <input type="text" class="form-control" id="customer-address" placeholder="">
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="customer-email" class="form-label">Customer Salary</label>
-                                        <input type="email" class="form-control" id="customer-email" placeholder="">
-                                    </div>
-
-                                    <div class="mt-3">
-                                        <button type="button" class="btn btn-outline-primary" id="customer-save">Save</button>
-                                        <button type="button" class="btn btn-outline-secondary">Update</button>
-                                        <button type="button" class="btn btn-outline-success">Clear</button>
-                                        <button type="button" class="btn btn-outline-danger">Delete</button>
-                                    </div>
-                                </form>
-                            </div>
+                    <div class="col-lg-6 d-flex flex-wrap gap-3 justify-content-center ">
+                        <div class="card p-4 shadow-sm h-100 w-100 border border-primary border border-3 " style="border-radius:20px; background-color: rgba(11,34,49,0.27)">
+                            <h4 class="mb-4 d-flex flex-wrap gap-3 justify-content-center text-primary">Customer Form</h4>
+                            <form class="row g-3 custome-form">
+                                <div class="col-md-6">
+                                    <input type="text" class="form-control border border-primary border border-1" placeholder="Customer First Name" id="fname">
+                                </div>
+                                <div class="col-md-6">
+                                    <input type="text" class="form-control border border-primary border border-1" placeholder="Customer Last Name" id="lname">
+                                </div>
+                                <div class="col-md-6">
+                                    <input type="number" class="form-control border border-primary border border-1" placeholder="Customer Salary" id="salary">
+                                </div>
+                                <div class="col-md-12">
+                                    <textarea type="text" class="form-control border border-primary border border-1" placeholder="Customer Address" id="address"></textarea>
+                                </div>
+                                <div class="col-12 ">
+                                    <button type="button" class="btn btn-success" id="customerSave">Save</button>
+                                    <button type="button" class="btn btn-warning">Update</button>
+                                    <button type="button" class="btn btn-danger">Delete</button>
+                                    <button type="button" class="btn btn-secondary" id="customer-reset">reset</button>
+                                </div>
+                            </form>
                         </div>
                     </div>
+
+
+
                     <div class="col-lg-6 col-md-12">
                         <div class="card my-4">
-                            <table class="table table-bordered custom-Table">
+                            <table class="table table-bordered custom-Table customer-table">
                                 <thead>
                                 <tr>
                                     <th scope="col">ID</th>
@@ -121,7 +106,7 @@
                                     <th scope="col">Salary</th>
                                 </tr>
                                 </thead>
-                                <tbody>
+                                <tbody id="customer-tbody">
                                 <tbody>
                             </table>
                         </div>
@@ -134,39 +119,30 @@
         <section id="items-content">
             <div class="container mt-4 ">
                 <div class="row mb-3 text-center">
-                    <h1>Item</h1>
+                    <h1  style="color:wheat"><i class="fa-solid fa-burger" style="color: wheat; margin: 15px"></i>Item</h1>
                 </div>
                 <div class="row">
-                    <div class="col-lg-6 col-md-12">
-                        <div class="card p-3 custom-Body">
+                    <div class="col-lg-6 d-flex flex-wrap gap-3 justify-content-center">
+                        <div class="card p-4 shadow-sm h-100 w-100 border border-warning border border-3 "  style="border-radius:20px; background-color: rgba(11,34,49,0.27)">
                             <div class="card-body custom-card ">
-                                <h5 class="card-title text-center">Item Details</h5>
-                                <br>
-                                <form>
-                                    <div class="mb-3">
-                                        <label for="item-id" class="form-label">Item ID</label>
-                                        <input type="text" class="form-control" id="item-id" placeholder="C000">
+                                <h4 class="mb-4 d-flex flex-wrap gap-3 justify-content-center text-warning">Item Form</h4>                                <br>
+                                <form class="row g-3">
+                                    <div class="col-md-6 ">
+                                        <input type="text" class="form-control border border-warning border border-1" id="item-name" placeholder="Item Name">
                                     </div>
-                                    <div class="mb-3">
-                                        <label for="item-name" class="form-label">Item Name</label>
-                                        <input type="text" class="form-control" id="item-name" placeholder="">
+                                    <div class="col-md-6 ">
+                                        <input type="number" class="form-control border border-warning border border-1" id="item-price" placeholder="Item Price">
                                     </div>
-                                    <div class="mb-3">
-                                        <label for="item-price" class="form-label">Price</label>
-                                        <input type="email" class="form-control" id="item-price" placeholder="">
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="item-qty" class="form-label">Quantity On Hand</label>
-                                        <input type="email" class="form-control" id="item-qty" placeholder="">
+                                    <div class="col-md-6 ">
+                                        <input type="number" class="form-control border border-warning border border-1" id="item-qty" placeholder="Item Quantity">
                                     </div>
 
                                     <div class="mt-3">
-                                        <button type="button" class="btn btn-outline-primary" id="item-Save">Save</button>
-                                        <button type="button" class="btn btn-outline-secondary">Update</button>
-                                        <button type="button" class="btn btn-outline-success">Clear</button>
-                                        <button type="button" class="btn btn-outline-danger">Delete</button>
+                                        <button type="button" class="btn btn-primary" id="item-Save">Save</button>
+                                        <button type="button" class="btn btn-warning">Update</button>
+                                        <button type="button" class="btn btn-success">Clear</button>
+                                        <button type="button" class="btn btn-danger">Delete</button>
                                     </div>
-
                                 </form>
                             </div>
                         </div>
@@ -195,93 +171,16 @@
         <br>
         <br>
 
-        <section class="container" id="order-content">
-            <div class="row mb-3 text-center">
-                <h1>Order Detail</h1>
-            </div>
-
-            <div class="row g-3 justify-content-between d-flex " >
-                <!-- Invoice Details Card -->
-            <div class="card col-md-4 order-card custom-Body custom-card">
-                <h3>Invoice Details</h3>
-                <form>
-                    <div class="mb-3">
-                        <label for="orderid" class="form-label">Order ID</label>
-                        <input type="text" class="form-control" id="orderid" placeholder="Enter ID" />
-                    </div>
-                    <div class="input-group d-flex mb-3 mt-3 justify-content-end">
-                        <input type="date" class="form-control" placeholder="date" aria-label="date" aria-describedby="basic-addon1">
-                    </div>
-                    <div class="mb-3 mt-3">
-                        <label for="customerId" class="form-label">Customer ID</label>
-                        <select class="form-select" id="customerId">
-                            <option selected disabled>Choose Customer ID</option>
-                            <option value="C001">C001</option>
-                            <option value="C002">C002</option>
-                            <option value="C003">C003</option>
-                        </select>
-                    </div>
-                    <a href="">
-                        <button type="button" class="btn btn-success">+ Add</button>
-                    </a>
-                </form>
-            </div>
-
-            <!-- Item Select Card -->
-            <div class="card col-md-4 order-card custom-Body custom-card custom-item-select fa-g-1">
-                <h3>Item Select</h3>
-                <form>
-                    <div class="mb-3 ">
-                        <label for="itemCode" class="form-label">Item Code</label>
-                        <select class="form-select" id="itemCode">
-                            <option selected disabled>Choose Item Code</option>
-                            <option value="I001">---</option>
-                            <option value="I002">---</option>
-                            <option value="I003">---</option>
-                        </select>
-                    </div>
-                    <div class="mb-3">
-                        <label for="description" class="form-label">Description</label>
-                        <input type="text" class="form-control" id="description" placeholder="Description" />
-                    </div>
-                    <div class="mb-3">
-                        <label for="unitPrice" class="form-label">Unit Price</label>
-                        <input type="number" class="form-control" id="unitPrice" placeholder="Enter Unit Price" />
-                    </div>
-                    <div class="mb-3">
-                        <label for="quantityOnHand" class="form-label">Qty On Hand</label>
-                        <input type="number" class="form-control" id="quantityOnHand" placeholder="Enter Quantity" />
-                    </div>
-                    <div class="mb-3">
-                        <label for="quantity" class="form-label">Quantity</label>
-                        <input type="number" class="form-control" id="quantity" placeholder="Enter Quantity" />
-                    </div>
-                    <a href="">
-                        <button type="button" class="btn btn-success">+ Add</button>
-                    </a>
-                </form>
-            </div>
-
-            <div class="card col-md-4 summary custom-Body custom-card">
-                <h4>Total: 0000Rs/=</h4>
-                <h5>Sub Total: 000Rs/=</h5>
-                <div class="mb-3 mt-3">
-                    <label for="discount" class="form-label">Discount</label>
-                    <input type="number" class="form-control" id="discount" placeholder="Enter Discount" />
-                </div>
-                <div class="mb-3">
-                    <label for="cash" class="form-label">Cash</label>
-                    <input type="number" class="form-control" id="cash" placeholder="Enter Cash" />
-                </div>
-                <button class="btn purchase-button btn-primary">Purchase</button>
-            </div>
-        </div>
-    </section>
 
 
 
-    <script src="Asset/lib/jquery-3.7.1.min.js"></script>
+
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous"></script>
-    <script src="Asset/controller/controllerScript.js"></script>
+    <script src="controller/controllerScript.js"></script>
+    <script type="module"  src="controller/CustomerController.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 </body>
 </html>
