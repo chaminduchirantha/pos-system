@@ -1,20 +1,20 @@
 import {customer_db} from "../db/db.js";
 import CustomerModel from "../model/CustomerModel.js";
+let customerIndex;
+
+$(document).ready(function (){
+    $("#inputCustomerId").val(generateCustomerId());
+})
 
 function loadCustomers() {
     $('#customer-tbody').empty();
     customer_db.map((customer, index) => {
-        let fname = customer.fname;
-        let lname = customer.lname;
-        let address = customer.address;
-        let salary = customer.salary
-
         let data = `<tr>
-                            <td>${index+1}</td>
-                            <td>${fname}</td>
-                            <td>${lname}</td>
-                            <td>${address}</td>
-                            <td>${salary}</td>
+                            <td>${customer._custId}</td>
+                            <td>${customer._fname}</td>
+                            <td>${customer._lname}</td>
+                            <td>${customer._address}</td>
+                            <td>${customer._salary}</td>
                         </tr>`
 
         $('#customer-tbody').append(data);
@@ -22,18 +22,29 @@ function loadCustomers() {
 }
 
 
+let generateCustomerId = function generatedCustomerId(){
+    console.log(customer_db.length + 1)
+    let id = customer_db.length + 1;
+    return "C00" + id;
+}
+
+let setCustomerId = () => {
+    $("#inputCustomerId").val(generateCustomerId());
+}
+
 
 //save Customer
 
 $('#customerSave').on('click', function(){
+    let custId = generateCustomerId();
     let fname = $('#fname').val();
     let lname = $('#lname').val();
     let address = $('#address').val();
     let salary = $('#salary').val();
-    console.log(`fname: ${fname}, lname: ${lname}, address: ${address}, salary: ${salary}`);
+    console.log(`custIs: ${custId} ,fname: ${fname}, lname: ${lname}, address: ${address}, salary: ${salary}`);
 
 
-    if(fname === '' || lname === '' || address === '' || salary === '') {
+    if(custId === ''|| fname === '' || lname === '' || address === '' || salary === '') {
 
         Swal.fire({
             title: 'Error!',
@@ -43,22 +54,66 @@ $('#customerSave').on('click', function(){
         })
     } else {
 
-        let customer_data = new CustomerModel(fname, lname, address, salary);
+        let customer_data = new CustomerModel(custId,fname, lname, address, salary);
 
         customer_db.push(customer_data);
 
         console.log(customer_db);
 
-        loadCustomers();
 
         Swal.fire({
             title: "Added Successfully!",
             icon: "success",
             draggable: true
         });
+        loadCustomers();
+        setCustomerId();
         clear();
     }
 });
+
+$('#customerUpdate').on("click", function(){
+    let custId = generateCustomerId();
+    let fname = $('#fname').val();
+    let lname = $('#lname').val();
+    let address = $('#address').val();
+    let salary = $('#salary').val();
+
+    if (custId === '' || fname === '' || lname === '' || address === '' || salary === '') {
+        Swal.fire({
+            title: "Error",
+            text: "Fill the fields first",
+            icon: "error",
+        });
+        return;
+    }
+
+    let index = customer_db.findIndex(customer => customer._custId === custId);
+
+    if (index === -1) {
+        Swal.fire({
+            title: "Error",
+            text: "Customer not found to update",
+            icon: "error"
+        });
+        return;
+    }
+
+    customer_db[index] = new CustomerModel(custId, fname, lname, address, salary);
+
+    Swal.fire({
+        title: "Updated!",
+        text: "Customer Updated Successfully!",
+        icon: "success"
+    });
+    clear();
+    loadCustomers();
+});
+
+$("#customerReset").on('click',function (){
+    clear();
+    setCustomerId();
+})
 
 function clear() {
     $('#fname').val('');
@@ -73,11 +128,13 @@ $('#customer-tbody').on('click', 'tr', function () {
     let obj = customer_db[idx];
     console.log(obj);
 
+    let custId = generateCustomerId();
     let fname = obj.fname;
     let lname = obj.lname;
     let address = obj.address;
     let salary = obj.salary;
 
+    $('#custId').val(custId);
     $('#fname').val(fname);
     $('#lname').val(lname);
     $('#address').val(address);
