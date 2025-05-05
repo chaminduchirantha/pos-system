@@ -22,21 +22,12 @@ function loadCustomers() {
 }
 
 
-let generateCustomerId = function generatedCustomerId(){
-    console.log(customer_db.length + 1)
-    let id = customer_db.length + 1;
-    return "C00" + id;
-}
-
-let setCustomerId = () => {
-    $("#inputCustomerId").val(generateCustomerId());
-}
 
 
 //save Customer
 
 $('#customerSave').on('click', function(){
-    let custId = generateCustomerId();
+    let custId = $('#custId').val();
     let fname = $('#fname').val();
     let lname = $('#lname').val();
     let address = $('#address').val();
@@ -73,7 +64,7 @@ $('#customerSave').on('click', function(){
 });
 
 $('#customerUpdate').on("click", function(){
-    let custId = generateCustomerId();
+    let custId = $('#custId').val();
     let fname = $('#fname').val();
     let lname = $('#lname').val();
     let address = $('#address').val();
@@ -110,9 +101,48 @@ $('#customerUpdate').on("click", function(){
     loadCustomers();
 });
 
+$('#customerDelete').on('click', function () {
+    let custId = $('#custId').val();
+    let fname = $('#fname').val();
+    let lname = $('#lname').val();
+    let address = $('#address').val();
+    let salary = $('#salary').val();
+
+    if (custId === '' || fname === '' || lname === '' || address === '' || salary === '') {
+        Swal.fire({
+            title: "Error",
+            text: "Fill the fields first",
+            icon: "error",
+        });
+        return;
+    }
+
+    let index = customer_db.findIndex(customer => customer._custId === custId);
+
+    if (index === -1) {
+        Swal.fire({
+            title: "Error",
+            text: "Customer not found to delete",
+            icon: "error"
+        });
+        return;
+    }
+
+    customer_db.splice(index, 1);
+    loadCustomers();
+
+    Swal.fire({
+        title: "Deleted!",
+        text: "Customer Deleted Successfully!",
+        icon: "success"
+    });
+
+    clear();
+});
+
+
 $("#customerReset").on('click',function (){
     clear();
-    setCustomerId();
 })
 
 function clear() {
@@ -128,7 +158,7 @@ $('#customer-tbody').on('click', 'tr', function () {
     let obj = customer_db[idx];
     console.log(obj);
 
-    let custId = generateCustomerId();
+    let custId = obj.custId;
     let fname = obj.fname;
     let lname = obj.lname;
     let address = obj.address;
