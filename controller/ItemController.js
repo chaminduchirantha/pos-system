@@ -1,6 +1,7 @@
 import {item_db} from "../db/db.js";
 import ItemModel from "../model/ItemModel.js";
 
+// =====================load Table====================
 
 function loadItems() {
     $('#itemTbody').empty();
@@ -15,6 +16,8 @@ function loadItems() {
         $('#itemTbody').append(data);
     });
 }
+
+// ============================Item Saved ========================
 
 $('#item-Save').on('click', function(){
     let itemId = $('#itemId').val();
@@ -56,12 +59,17 @@ $("#itemClear").on('click',function (){
     clear();
 })
 
+// ==================clear=========================
+
 function clear() {
     $('#itemId').val('');
     $('#item-name').val('');
     $('#item-price').val('');
     $('#item-qty').val('');
 }
+
+
+// =======================Item Update===================================
 
 $('#itemUpdate').on("click", function(){
     let itemId = $('#itemId').val();
@@ -106,6 +114,48 @@ $('#itemUpdate').on("click", function(){
     }
 });
 
+// =================================Item Deleted========================
+
+$('#itemDelete').on('click', function () {
+    let itemId = $('#itemId').val();
+    let itemName = $('#item-name').val();
+    let itemPrice = $('#item-price').val();
+    let itemQty = $('#item-qty').val();
+    console.log(`itemId: ${itemId} ,itemName: ${itemName}, itemPrice: ${itemPrice}, itemQty: ${itemQty}`);
+
+    if(itemId === ''|| itemName === '' || itemPrice === '' || itemQty === '' ) {
+        Swal.fire({
+            title: "Error",
+            text: "Fill the fields first",
+            icon: "error",
+        });
+        return;
+    }
+
+    let index = item_db.findIndex(item => item._itemId === itemId);
+
+    if (index === -1) {
+        Swal.fire({
+            title: "Error",
+            text: "item not found to delete",
+            icon: "error"
+        });
+        return;
+    }
+
+    item_db.splice(index, 1);
+
+    Swal.fire({
+        title: "Deleted!",
+        text: "Item Deleted Successfully!",
+        icon: "success"
+    });
+
+    loadItems();
+    clear();
+});
+
+// ==============================on click =================================
 
 $('#itemTbody').on('click', 'tr', function () {
     let id = $(this).index();
