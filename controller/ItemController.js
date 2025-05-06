@@ -62,3 +62,21 @@ function clear() {
     $('#item-price').val('');
     $('#item-qty').val('');
 }
+
+
+$('#itemTbody').on('click', 'tr', function () {
+    let id = $(this).index();
+    console.log(id);
+    let obj = item_db[id];
+    console.log(obj);
+
+    let itemId = obj.itemId;
+    let itemName = obj.itemName;
+    let itemPrice = obj.itemPrice;
+    let itemQty = obj.itemQuantity;
+
+    $('#itemId').val(itemId);
+    $('#item-name').val(itemName);
+    $('#item-price').val(itemPrice);
+    $('#item-qty').val(itemQty);
+});
