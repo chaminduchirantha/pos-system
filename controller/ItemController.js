@@ -47,7 +47,18 @@ $('#item-Save').on('click', function(){
             draggable: true
         });
         loadItems();
-        // setCustomerId();
-        // clear();
+        clear();
     }
 });
+
+
+$("#itemClear").on('click',function (){
+    clear();
+})
+
+function clear() {
+    $('#itemId').val('');
+    $('#item-name').val('');
+    $('#item-price').val('');
+    $('#item-qty').val('');
+}
