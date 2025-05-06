@@ -63,6 +63,49 @@ function clear() {
     $('#item-qty').val('');
 }
 
+$('#itemUpdate').on("click", function(){
+    let itemId = $('#itemId').val();
+    let itemName = $('#item-name').val();
+    let itemPrice = $('#item-price').val();
+    let itemQty = $('#item-qty').val();
+    console.log(`itemId: ${itemId} ,itemName: ${itemName}, itemPrice: ${itemPrice}, itemQty: ${itemQty}`);
+
+    if(itemId === ''|| itemName === '' || itemPrice === '' || itemQty === '' ) {
+
+        Swal.fire({
+            title: 'Error!',
+            text: 'Invalid Inputs',
+            icon: 'error',
+            confirmButtonText: 'Ok'
+        })
+    } else {
+
+        let index = item_db.findIndex(item => item._itemId === itemId);
+
+    if (index === -1) {
+        Swal.fire({
+            title: "Error",
+            text: "Item not found to update",
+            icon: "error"
+        });
+        return;
+    }
+
+        item_db[index] = new ItemModel(itemId,itemName, itemPrice, itemQty);
+
+        console.log(item_db);
+
+
+        Swal.fire({
+            title: "update Successfully Item!",
+            icon: "success",
+            draggable: true
+        });
+        loadItems();
+        clear();
+    }
+});
+
 
 $('#itemTbody').on('click', 'tr', function () {
     let id = $(this).index();
