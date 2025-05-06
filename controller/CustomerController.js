@@ -24,7 +24,7 @@ function loadCustomers() {
 
 
 
-//save Customer
+// ==========================save customer======================
 
 $('#customerSave').on('click', function(){
     let custId = $('#custId').val();
@@ -63,6 +63,8 @@ $('#customerSave').on('click', function(){
     }
 });
 
+// ================update customer============================
+
 $('#customerUpdate').on("click", function(){
     let custId = $('#custId').val();
     let fname = $('#fname').val();
@@ -100,6 +102,8 @@ $('#customerUpdate').on("click", function(){
     clear();
     loadCustomers();
 });
+
+// ========================delete customer===========================
 
 $('#customerDelete').on('click', function () {
     let custId = $('#custId').val();
@@ -151,6 +155,8 @@ function clear() {
     $('#address').val('');
     $('#salary').val('');
 }
+
+// ========================on click==================================
 
 $('#customer-tbody').on('click', 'tr', function () {
     let idx = $(this).index();
