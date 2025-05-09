@@ -50,6 +50,7 @@ $('#item-Save').on('click', function(){
             draggable: true
         });
         loadItems();
+        loadItemIds();
         clear();
     }
 });
@@ -173,3 +174,17 @@ $('#itemTbody').on('click', 'tr', function () {
     $('#item-price').val(itemPrice);
     $('#item-qty').val(itemQty);
 });
+
+
+function loadItemIds() {
+    $('#cmbItemCode').empty();
+    $('#cmbItemCode').append(`<option>Select Item ID</option>`);
+    item_db.forEach(item => {
+        $('#cmbItemCode').append(
+            $('<option>', {
+                value: item.itemId,
+                text: item.itemId
+            })
+        );
+    });
+}
