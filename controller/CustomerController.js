@@ -1,10 +1,7 @@
 import {customer_db} from "../db/db.js";
 import CustomerModel from "../model/CustomerModel.js";
-let customerIndex;
 
-$(document).ready(function (){
-    $("#inputCustomerId").val(generateCustomerId());
-})
+
 
 function loadCustomers() {
     $('#customer-tbody').empty();
@@ -20,9 +17,6 @@ function loadCustomers() {
         $('#customer-tbody').append(data);
     })
 }
-
-
-
 
 // ==========================save customer======================
 
