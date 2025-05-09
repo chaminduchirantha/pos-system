@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html"
-      xmlns="http://www.w3.org/1999/html">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Restaurant Pos System</title>
@@ -206,60 +205,175 @@
         </section>
 
 
-    <section id="orders-content">
-        <div class="container mt-4 ">
-            <div class="row mb-3 text-center">
-                <h1  style="color:wheat"><i class="fa-solid fa-cart-shopping" style="color: wheat; margin: 15px"></i>Place Order</h1>
-            </div>
-            <div class="row">
-                <div class="col-lg-6 d-flex flex-wrap gap-3 justify-content-center">
-                    <div class="card p-4 shadow-sm h-100 w-100 border border-success border border-3 "  style="border-radius:20px; background-color: rgba(11,34,49,0.27)">
-                        <div class="card-body custom-card ">
-                            <h4 class="mb-4 d-flex flex-wrap gap-3 justify-content-center text-success">Place Order Form</h4>                                <br>
-                            <form class="row g-3">
-                                <div class="col-md-6 ">
-                                    <input type="text" class="form-control border border-success border border-2" id="orderId" placeholder="order ID">
-                                </div>
-                                <div class="col-md-6 ">
-                                    <input type="text" class="form-control border border-success border border-2" id="customerId" placeholder="customer Id">
-                                </div>
-                                <div class="col-md-6 ">
-                                    <input type="text" class="form-control border border-success border border-2" id="order-itemId" placeholder="Item Id">
-                                </div>
-                                <div class="col-md-6 ">
-                                    <input type="number" class="form-control border border-success border border-2" id="order-itemQuantity" placeholder="Quantity On Hand">
-                                </div>
-                                <div class="col-md-6 ">
-                                    <input type="text" class="form-control border border-success border border-2" id="order-itemDesc" placeholder="Item Description">
-                                </div>
+<section id="orders-content">
+    <div class="container mt-4">
+        <div class="row mb-3 text-center">
+            <h1  style="color:wheat"><i class="fa-solid fa-cart-shopping" style="color: wheat; margin: 15px"></i>Punchers Order</h1>
+        </div>
+        <div class="row">
+            <div class="col-lg-4 col-md-12">
+                <div class="card input p-3 border-primary border-3 " style="border-radius:20px; background-color: rgba(11,34,49,0.27)">
+                    <div class="card-body">
+                        <h5 class="card-title text-center text-primary">Order Details</h5>
+                        <br>
+                        <form>
+                            <div class="mb-3">
+                                <input type="text" class="form-control border border-primary border border-2" id="orderId" placeholder="Order Id">
+                            </div>
+                            <div class="mb-3">
+                                <input type="date" class="form-control border border-primary border border-2" id="date" placeholder="Order Date">
+                            </div>
+                            <div class="mb-3">
+                                <select id="selectCustomerId" class="form-select border border-primary border border-2"></select>
+                            </div>
+                            <div class="mb-3">
+                                <input type="text" class="form-control border border-primary border border-2" id="cusName" placeholder="customer Name">
+                            </div>
+                            <div class="mb-3">
+                                <input type="text" class="form-control border border-primary border border-2" id="cusAddress" placeholder="customer Address">
+                            </div>
+                            <div class="mb-3">
+                                <input type="text" class="form-control border border-primary border border-2" id="cusNumber" placeholder="Contact Number">
+                            </div>
 
-                                <div class="mt-3">
-                                    <button type="button" class="btn btn-success">place Order</button>
-                                </div>
-                            </form>
-                        </div>
+
+                        </form>
                     </div>
                 </div>
-                <div class="col-lg-6 col-md-12">
-                    <div class="card my-4">
+            </div>
+            <div class="col-lg-4 col-md-12 mt-7">
+                <div class="card input p-3 border-primary border border-3 " style="border-radius:20px; background-color: rgba(11,34,49,0.27); height: 455px">
+                    <h5 class="card-title text-center text-primary">Item Details</h5>
+                    <br>
+                    <form>
+                        <div class="mb-3">
+                            <select id="selectItemCode" class="form-select"></select>
+                        </div>
+                        <div class="mb-3">
+                            <input type="text" class="form-control" id="OrItemName" placeholder="Item Name">
+                        </div>
+                        <div class="mb-3">
+                            <input type="text" class="form-control" id="OrPrice" placeholder="Item Price">
+                        </div>
+                        <div class="mb-3">
+                            <input type="text" class="form-control" id="ItemQty" placeholder="Item Quantity">
+                        </div>
+                        <div class="mb-3">
+                            <input type="text" class="form-control" id="OrQty" placeholder="Order Quantity">
+                        </div>
+                    </form>
+                    <button type="button" class="btn btn-warning"  style="margin: 5px" id="card">Add Cart</button>
+                    <button type="button" class="btn btn-danger" style="margin: 5px" id="remove">Remove</button>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-12 mt-7">
+                <div class="card input p-3 bill border-primary border border-3 " style="border-radius:20px; background-color: rgba(11,34,49,0.27);height: 455px" )>
+                    <h5 class="card-title text-center  text-primary" >Order Slip</h5>
+                    <br>
+                    <form>
+                        <div class="mb-3">
+                            <div>
+                                <h4 id="subTotal" style="color: wheat; font-size: 1rem">Sub  total :00.00</h4>
+
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <input type="text" class="form-control outLine" id="rate" placeholder="">
+                        </div>
+                        <div class="mb-3">
+                            <div>
+                                <h4  id="discount" style="color: wheat; font-size: 1rem">Discount :00.00</h4>
+
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <div>
+                                <h4  id="total" style="color: wheat; font-size: 1rem">Total :00.00</h4>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <input type="text" class="form-control outLine Cash" id="cash"  placeholder="" >
+                        </div>
+                        <div class="mb-3">
+                            <div>
+                                <h4  id="balance" style="color: wheat; font-size: 1rem">Balance :00.00</h4>
+                            </div>
+                        </div>
+                    </form>
+                    <button type="button" class="btn btn-warning" id="">Purchase Order</button>
+                </div>
+            </div>
+
+        </div>
+        <div class="card my-4">
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                    <tr>
+                        <th scope="col">Item Code</th>
+                        <th scope="col">Item Name</th>
+                        <th scope="col">Price</th>
+                        <th scope="col">Quantity</th>
+                        <th scope="col">Total</th>
+                    </tr>
+                    </thead>
+                    <tbody id="CartBody">
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!--Order details Section-->
+
+<section id="order-detail-content">
+    <div class="container mt-4">
+        <div class="row mb-3 text-center">
+            <h1>Order Details</h1>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-12 col-md-12">
+
+
+                <div class="container-fluid searchBarParent">
+                    <div class="input-group mb-3 searchBar">
+                        <input id="orderSearch" type="text" class="searchInputField form-control" placeholder="Search Customer" aria-label="Recipient's username" aria-describedby="button-addon2">
+                        <button class="btn btn-outline-secondary searchBtn" type="button" id="button-addono">Search</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-lg-12  tablecart">
+                <div class="card ">
+                    <div class="table-responsive">
                         <table class="table table-bordered">
                             <thead>
                             <tr>
                                 <th scope="col">order Id</th>
+                                <th scope="col">date</th>
                                 <th scope="col">customer Id</th>
-                                <th scope="col">Item Id</th>
-                                <th scope="col">Item Quantity</th>
-                                <th scope="col">Item Description</th>
+                                <th scope="col">Item Name</th>
+                                <th scope="col">Item Price</th>
+                                <th scope="col">Order Quantity</th>
+                                <th scope="col">sub total</th>
+                                <th scope="col">discount range %</th>
+                                <th scope="col">discount</th>
+                                <th scope="col">final Amount</th>
                             </tr>
                             </thead>
-                            <tbody>
+                            <tbody id="OrderDetails-tbody">
+
                             </tbody>
                         </table>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
 
 
