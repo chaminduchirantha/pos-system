@@ -42,3 +42,11 @@ $('#orderDetails-nav').on('click', function() {
     $('#orders-content').css('display', 'none');
 
 });
+
+$(document).ready(function () {
+        $('#home-container').css('display', 'block');
+        $('#customer-content').css('display', 'none');
+        $('#items-content').css('display', 'none');
+        $('#orders-content').css('display', 'none');
+        $('#order-detail-content').css('display', 'none');
+});
