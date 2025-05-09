@@ -1,7 +1,21 @@
 import {customer_db} from "../db/db.js";
 import CustomerModel from "../model/CustomerModel.js";
 
+$(document).ready(function() {
 
+    generateCustomerId();
+
+});
+
+function generateCustomerId() {
+    if (customer_db.length === 0) {
+        $('#custId').val('C001');
+    } else {
+        const lastId = customer_db[customer_db.length - 1].customerId;
+        const num = parseInt(lastId.substring(3)) + 1;
+        $('#custId').val('C' + num.toString().padStart(3,'0'));
+    }
+}
 
 function loadCustomers() {
     $('#customer-tbody').empty();
@@ -52,7 +66,7 @@ $('#customerSave').on('click', function(){
             draggable: true
         });
         loadCustomers();
-        setCustomerId();
+        loadCustomerIds()
         clear();
     }
 });
@@ -89,9 +103,13 @@ $('#customerUpdate').on("click", function(){
     customer_db[index] = new CustomerModel(custId, fname, lname, address, salary);
 
     Swal.fire({
-        title: "Updated!",
-        text: "Customer Updated Successfully!",
-        icon: "success"
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, update it!"
     });
     clear();
     loadCustomers();
@@ -130,9 +148,13 @@ $('#customerDelete').on('click', function () {
     loadCustomers();
 
     Swal.fire({
-        title: "Deleted!",
-        text: "Customer Deleted Successfully!",
-        icon: "success"
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, Customer Deleted !"
     });
 
     clear();
@@ -170,5 +192,19 @@ $('#customer-tbody').on('click', 'tr', function () {
     $('#address').val(address);
     $('#salary').val(salary);
 });
+
+
+function loadCustomerIds() {
+    $('#cmbCustomerId').empty();
+    $('#cmbCustomerId').append(`<option></option>`);
+    customer_db.forEach(customer => {
+        $('#cmbCustomerId').append(
+            $('<option>', {
+                value: customer.custId,
+                text: customer.custId
+            })
+        );
+    });
+}
 
 
