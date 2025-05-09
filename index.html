@@ -218,22 +218,28 @@
                         <br>
                         <form>
                             <div class="mb-3">
+                                <label for="orderId" class="form-label" style="color: wheat">Order Id</label>
                                 <input type="text" class="form-control border border-primary border border-2" id="orderId" placeholder="Order Id">
                             </div>
                             <div class="mb-3">
-                                <input type="date" class="form-control border border-primary border border-2" id="date" placeholder="Order Date">
+                                <label for="orderDate" class="form-label" style="color: wheat">Order Date</label>
+                                <input type="date" class="form-control border border-primary border border-2" id="orderDate" placeholder="Order Date">
                             </div>
                             <div class="mb-3">
-                                <select id="selectCustomerId" class="form-select border border-primary border border-2"></select>
+                                <label for="cmbCustomerId" class="form-label" style="color: wheat">Customer Ids</label>
+                                <select id="cmbCustomerId" class="form-select border border-primary border border-2"></select>
                             </div>
                             <div class="mb-3">
-                                <input type="text" class="form-control border border-primary border border-2" id="cusName" placeholder="customer Name">
+                                <label for="custFName" class="form-label" style="color: wheat">Customer First Name</label>
+                                <input type="text" class="form-control border border-primary border border-2" id="custFName" placeholder="customer first Name">
                             </div>
                             <div class="mb-3">
-                                <input type="text" class="form-control border border-primary border border-2" id="cusAddress" placeholder="customer Address">
+                                <label for="custLname" class="form-label" style="color: wheat">Customer Last Name</label>
+                                <input type="text" class="form-control border border-primary border border-2" id="custLname" placeholder="customer last Name">
                             </div>
                             <div class="mb-3">
-                                <input type="text" class="form-control border border-primary border border-2" id="cusNumber" placeholder="Contact Number">
+                                <label for="custAddress" class="form-label" style="color: wheat">Customer Address</label>
+                                <input type="text" class="form-control border border-primary border border-2" id="custAddress" placeholder="Customer Address">
                             </div>
 
 
@@ -242,33 +248,38 @@
                 </div>
             </div>
             <div class="col-lg-4 col-md-12 mt-7">
-                <div class="card input p-3 border-primary border border-3 " style="border-radius:20px; background-color: rgba(11,34,49,0.27); height: 455px">
+                <div class="card input p-3 border-primary border border-3 " style="border-radius:20px; background-color: rgba(11,34,49,0.27); height: 648px">
                     <h5 class="card-title text-center text-primary">Item Details</h5>
                     <br>
                     <form>
                         <div class="mb-3">
-                            <select id="selectItemCode" class="form-select"></select>
+                            <label for="cmbItemCode" class="form-label" style="color: wheat">Item Ids</label>
+                            <select id="cmbItemCode" class="form-select"></select>
                         </div>
                         <div class="mb-3">
-                            <input type="text" class="form-control" id="OrItemName" placeholder="Item Name">
+                            <label for="orderItemName" class="form-label" style="color: wheat">Item Ids</label>
+                            <input type="text" class="form-control" id="orderItemName" placeholder="Item Name">
                         </div>
                         <div class="mb-3">
-                            <input type="text" class="form-control" id="OrPrice" placeholder="Item Price">
+                            <label for="orderItemPrice" class="form-label" style="color: wheat">Item Ids</label>
+                            <input type="text" class="form-control" id="orderItemPrice" placeholder="Item Price">
                         </div>
                         <div class="mb-3">
-                            <input type="text" class="form-control" id="ItemQty" placeholder="Item Quantity">
+                            <label for="orderItemQty" class="form-label" style="color: wheat">Item Ids</label>
+                            <input type="text" class="form-control" id="orderItemQty" placeholder="Item Quantity">
                         </div>
                         <div class="mb-3">
-                            <input type="text" class="form-control" id="OrQty" placeholder="Order Quantity">
+                            <label for="ordersQty" class="form-label" style="color: wheat">Item Ids</label>
+                            <input type="text" class="form-control" id="ordersQty" placeholder="Order Quantity">
                         </div>
                     </form>
-                    <button type="button" class="btn btn-warning"  style="margin: 5px" id="card">Add Cart</button>
+                    <button type="button" class="btn btn-warning"  style="margin: 5px" id="addToCard">Add Cart</button>
                     <button type="button" class="btn btn-danger" style="margin: 5px" id="remove">Remove</button>
                 </div>
             </div>
 
             <div class="col-lg-4 col-md-12 mt-7">
-                <div class="card input p-3 bill border-primary border border-3 " style="border-radius:20px; background-color: rgba(11,34,49,0.27);height: 455px" )>
+                <div class="card input p-3 bill border-primary border border-3 " style="border-radius:20px; background-color: rgba(11,34,49,0.27);height: 648px" )>
                     <h5 class="card-title text-center  text-primary" >Order Slip</h5>
                     <br>
                     <form>
@@ -279,7 +290,7 @@
                             </div>
                         </div>
                         <div class="mb-3">
-                            <input type="text" class="form-control outLine" id="rate" placeholder="">
+                            <input type="number" class="form-control outLine" id="rate" placeholder="Discount">
                         </div>
                         <div class="mb-3">
                             <div>
@@ -293,7 +304,7 @@
                             </div>
                         </div>
                         <div class="mb-3">
-                            <input type="text" class="form-control outLine Cash" id="cash"  placeholder="" >
+                            <input type="number" class="form-control outLine Cash" id="cash"  placeholder="cash" >
                         </div>
                         <div class="mb-3">
                             <div>
@@ -301,7 +312,7 @@
                             </div>
                         </div>
                     </form>
-                    <button type="button" class="btn btn-warning" id="">Purchase Order</button>
+                    <button type="button" class="btn btn-warning" id="purchase">Purchase Order</button>
                 </div>
             </div>
 
@@ -318,7 +329,7 @@
                         <th scope="col">Total</th>
                     </tr>
                     </thead>
-                    <tbody id="CartBody">
+                    <tbody id="cart-tBody">
 
                     </tbody>
                 </table>
@@ -386,6 +397,7 @@
     <script src="controller/controllerScript.js"></script>
     <script type="module"  src="controller/CustomerController.js"></script>
     <script type="module"  src="controller/ItemController.js"></script>
+    <script type="module"  src="controller/OrdersController.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 </body>
