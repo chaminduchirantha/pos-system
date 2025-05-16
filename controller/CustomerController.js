@@ -2,20 +2,16 @@ import {customer_db} from "../db/db.js";
 import CustomerModel from "../model/CustomerModel.js";
 
 $(document).ready(function() {
-
-    generateCustomerId();
-
+    setGeneratedCustomerId()
 });
+    let currentId =1;
 
-function generateCustomerId() {
-    if (customer_db.length === 0) {
-        $('#custId').val('C001');
-    } else {
-        const lastId = customer_db[customer_db.length - 1].customerId;
-        const num = parseInt(lastId.substring(3)) + 1;
-        $('#custId').val('C' + num.toString().padStart(3,'0'));
+    function generateCustomerId() {
+        let customerId = 'C' + String(currentId).padStart(3, '0');
+        currentId++;
+        return customerId;
     }
-}
+
 
 function loadCustomers() {
     $('#customer-tbody').empty();
@@ -29,8 +25,14 @@ function loadCustomers() {
                         </tr>`
 
         $('#customer-tbody').append(data);
+        generateCustomerId()
     })
 }
+
+function setGeneratedCustomerId() {
+    $('#custId').val(generateCustomerId());
+}
+
 
 // ==========================save customer======================
 
@@ -68,6 +70,7 @@ $('#customerSave').on('click', function(){
         loadCustomers();
         loadCustomerIds()
         clear();
+        setGeneratedCustomerId()
     }
 });
 
@@ -113,6 +116,7 @@ $('#customerUpdate').on("click", function(){
     });
     clear();
     loadCustomers();
+    setGeneratedCustomerId()
 });
 
 // ========================delete customer===========================
