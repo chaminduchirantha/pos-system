@@ -41,7 +41,7 @@
     </div>
 </nav>
 
-    <section id="home-container" style="height: 80vh;">
+    <section id="home-container" class="homeSection" style="height: 80vh;">
         <div id="carouselExample" class="carousel slide">
             <div class="carousel-inner">
                 <div class="carousel-item active">
@@ -101,7 +101,7 @@
                             <h4 class="mb-4 d-flex flex-wrap gap-3 justify-content-center text-primary">Customer Form</h4>
                             <form class="row g-3 custome-form">
                                 <div class="col-md-6">
-                                    <input type="text" class="form-control border border-primary border border-1" placeholder="Customer Id" id="custId">
+                                    <input type="text" class="form-control border border-primary border border-1" placeholder="Customer Id" id="custId" disabled>
                                 </div>
                                 <div class="col-md-6">
                                     <input type="text" class="form-control border border-primary border border-1" placeholder="Customer First Name" id="fname">
@@ -257,24 +257,23 @@
                             <select id="cmbItemCode" class="form-select"></select>
                         </div>
                         <div class="mb-3">
-                            <label for="orderItemName" class="form-label" style="color: wheat">Item Ids</label>
+                            <label for="orderItemName" class="form-label" style="color: wheat">Item Names</label>
                             <input type="text" class="form-control" id="orderItemName" placeholder="Item Name">
                         </div>
                         <div class="mb-3">
-                            <label for="orderItemPrice" class="form-label" style="color: wheat">Item Ids</label>
+                            <label for="orderItemPrice" class="form-label" style="color: wheat">Item Price</label>
                             <input type="text" class="form-control" id="orderItemPrice" placeholder="Item Price">
                         </div>
                         <div class="mb-3">
-                            <label for="orderItemQty" class="form-label" style="color: wheat">Item Ids</label>
+                            <label for="orderItemQty" class="form-label" style="color: wheat">Item Quantity</label>
                             <input type="text" class="form-control" id="orderItemQty" placeholder="Item Quantity">
                         </div>
                         <div class="mb-3">
-                            <label for="ordersQty" class="form-label" style="color: wheat">Item Ids</label>
+                            <label for="ordersQty" class="form-label" style="color: wheat">Orders Quantity</label>
                             <input type="text" class="form-control" id="ordersQty" placeholder="Order Quantity">
                         </div>
                     </form>
-                    <button type="button" class="btn btn-warning"  style="margin: 5px" id="addToCard">Add Cart</button>
-                    <button type="button" class="btn btn-danger" style="margin: 5px" id="remove">Remove</button>
+                    <button type="button" class="btn btn-warning"  style="margin: 5px" id="addToCard">Add To Cart</button>
                 </div>
             </div>
 
@@ -285,7 +284,7 @@
                     <form>
                         <div class="mb-3">
                             <div>
-                                <h4 id="subTotal" style="color: wheat; font-size: 1rem">Sub  total :00.00</h4>
+                                <h4 id="subTotal" style="color: wheat; font-size: 1rem">Sub total :00.00</h4>
 
                             </div>
                         </div>
