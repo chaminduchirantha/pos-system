@@ -116,6 +116,38 @@ $('#customerUpdate').on("click", function(){
     let address = $('#address').val();
     let salary = $('#salary').val();
 
+
+    if (!addressPattern.test(address)) {
+        Swal.fire({
+            title: "Error!",
+            text: "Invalid Address format",
+            icon: "error",
+            confirmButtonText: "Ok"
+        });
+        return;
+    }
+
+    if (!firstNamePattern.test(fname)) {
+        Swal.fire({
+            title: "Error!",
+            text: "Invalid First Name",
+            icon: "error",
+            confirmButtonText: "Ok"
+        });
+        return;
+    }
+
+    if (!lastNamePattern.test(lname)) {
+        Swal.fire({
+            title: "Error!",
+            text: "Invalid last Name",
+            icon: "error",
+            confirmButtonText: "Ok"
+        });
+        return;
+    }
+
+
     if (custId === '' || fname === '' || lname === '' || address === '' || salary === '') {
         Swal.fire({
             title: "Error",
