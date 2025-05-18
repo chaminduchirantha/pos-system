@@ -1,6 +1,10 @@
 import {customer_db} from "../db/db.js";
 import CustomerModel from "../model/CustomerModel.js";
 
+let addressPattern =/^[a-zA-Z0-9\s,.'-]{5,100}$/
+let firstNamePattern =/^[A-Za-z\s]{3,40}$/
+let lastNamePattern =/^[A-Za-z\s]{3,40}$/
+
 $(document).ready(function() {
     setGeneratedCustomerId()
 });
@@ -43,6 +47,37 @@ $('#customerSave').on('click', function(){
     let address = $('#address').val();
     let salary = $('#salary').val();
     console.log(`custIs: ${custId} ,fname: ${fname}, lname: ${lname}, address: ${address}, salary: ${salary}`);
+
+
+    if (!addressPattern.test(address)) {
+        Swal.fire({
+            title: "Error!",
+            text: "Invalid Address format",
+            icon: "error",
+            confirmButtonText: "Ok"
+        });
+        return;
+    }
+
+     if (!firstNamePattern.test(fname)) {
+            Swal.fire({
+                title: "Error!",
+                text: "Invalid First Name",
+                icon: "error",
+                confirmButtonText: "Ok"
+            });
+            return;
+        }
+
+     if (!lastNamePattern.test(lname)) {
+            Swal.fire({
+                title: "Error!",
+                text: "Invalid last Name",
+                icon: "error",
+                confirmButtonText: "Ok"
+            });
+            return;
+        }
 
 
     if(custId === ''|| fname === '' || lname === '' || address === '' || salary === '') {
