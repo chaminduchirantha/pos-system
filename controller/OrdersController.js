@@ -164,6 +164,53 @@ const updateItemTable = () => {
                             <td>${item.itemQuantity}</td>
                             </tr>`
         $('#itemTbody').append(data);
-    })
+    });
 }
 
+$('#purchase').click(function () {
+    let orderId = $('#orderId').val();
+    let customerId = $('#cmbCustomerId').val();
+    let date = $('#orderDate').val();
+    let ordersQty = $('#ordersQty').val();
+    let amount = Number($('#subTotal').val());
+
+    console.log(orderId , customerId , date , ordersQty , amount)
+
+    if (!customerId || cart_db.length === 0 || isNaN(amount) || amount < 0) {
+        Swal.fire({
+            title: 'Warning!',
+            html: 'Please check: add to cart table',
+            icon: 'warning'
+        });
+        return;
+    }
+
+
+    order_db.push({
+        orderId: Number(orderId),
+        date: date,
+        customerId: customerId,
+        ordersQty: ordersQty,
+        total: amount,
+    });
+
+
+    Swal.fire({
+        title: 'Order Saved!',
+        showCancelButton: true,
+        confirmButtonText: 'Yes',
+        cancelButtonText: 'No'
+    })
+
+
+    const orderDetail = $('#OrderDetails-tbody');
+    orderDetail .append(`
+        <tr>
+            <td>${orderId}</td>
+            <td>${date}</td>
+            <td>${customerId}</td>
+            <td>${ordersQty}</td>
+            <td>${total}</td>
+        </tr>
+    `);
+});
