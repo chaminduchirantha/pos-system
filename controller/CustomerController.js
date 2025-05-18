@@ -6,15 +6,18 @@ let firstNamePattern =/^[A-Za-z\s]{3,40}$/
 let lastNamePattern =/^[A-Za-z\s]{3,40}$/
 
 $(document).ready(function() {
-    setGeneratedCustomerId()
+    clear()
 });
-    let currentId =1;
 
-    function generateCustomerId() {
-        let customerId = 'C' + String(currentId).padStart(3, '0');
-        currentId++;
-        return customerId;
-    }
+
+function nextId() {
+    if (customer_db.length === 0) return "C001";
+
+    let lastCustomerId = customer_db[customer_db.length - 1].custId;
+    let number = parseInt(lastCustomerId.slice(1), 10);
+    let nextNumber = number + 1;
+    return "C" + nextNumber.toString().padStart(3, '0');
+}
 
 
 function loadCustomers() {
@@ -29,19 +32,15 @@ function loadCustomers() {
                         </tr>`
 
         $('#customer-tbody').append(data);
-        generateCustomerId()
     })
 }
 
-function setGeneratedCustomerId() {
-    $('#custId').val(generateCustomerId());
-}
 
 
 // ==========================save customer======================
 
 $('#customerSave').on('click', function(){
-    let custId = $('#custId').val();
+    let custId = nextId();
     let fname = $('#fname').val();
     let lname = $('#lname').val();
     let address = $('#address').val();
@@ -105,7 +104,6 @@ $('#customerSave').on('click', function(){
         loadCustomers();
         loadCustomerIds()
         clear();
-        setGeneratedCustomerId()
     }
 });
 
@@ -151,7 +149,6 @@ $('#customerUpdate').on("click", function(){
     });
     clear();
     loadCustomers();
-    setGeneratedCustomerId()
 });
 
 // ========================delete customer===========================
@@ -202,9 +199,12 @@ $('#customerDelete').on('click', function () {
 
 $("#customerReset").on('click',function (){
     clear();
+    loadCustomers();
+    nextId();
 })
 
 function clear() {
+    $('#custId').val(nextId());
     $('#fname').val('');
     $('#lname').val('');
     $('#address').val('');
