@@ -237,3 +237,36 @@ function loadItemIds() {
         );
     });
 }
+
+
+function searchItemById(itemId) {
+    let item = item_db.find(i => i._itemId === itemId);
+
+    if (!item) {
+        Swal.fire({
+            title: "Not Found!",
+            text: "Not Item found with ID: " + itemId,
+            icon: "warning"
+        });
+        return;
+    }
+}
+
+
+$('#searchItemButton').on('click', function () {
+    let searchId = $('#searchItemId').val().trim();
+    if (searchId === '') {
+        Swal.fire({
+            title: "Item Is Not Found",
+            text: "Unsuccessful Item Search",
+            icon: "error"
+        });
+    } else {
+        Swal.fire({
+            title: "Item is Find",
+            text: "Successfully Item Search",
+            icon: "success"
+        });
+        searchItemById(searchId);
+    }
+});
