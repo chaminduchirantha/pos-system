@@ -246,4 +246,34 @@ function loadCustomerIds() {
     });
 }
 
+function searchCustomerById(custId) {
+    let customer = customer_db.find(c => c._custId === custId);
 
+    if (!customer) {
+        Swal.fire({
+            title: "Not Found!",
+            text: "No customer found with ID: " + custId,
+            icon: "warning"
+        });
+        return;
+    }
+}
+
+
+$('#searchCustomerButton').on('click', function () {
+    let searchId = $('#searchId').val().trim();
+    if (searchId === '') {
+        Swal.fire({
+            title: "Customer Is Not Found",
+            text: "Unsuccessful Customer Search",
+            icon: "error"
+        });
+    } else {
+        Swal.fire({
+            title: "Customer is Find",
+            text: "Successfully Customer Search",
+            icon: "success"
+        });
+        searchCustomerById(searchId);
+    }
+});
