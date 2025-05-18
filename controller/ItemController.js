@@ -1,5 +1,10 @@
-import {item_db} from "../db/db.js";
+import {customer_db, item_db} from "../db/db.js";
 import ItemModel from "../model/ItemModel.js";
+
+$(document).ready(function() {
+    clear();
+});
+
 
 let itemNamePattern = /([A-Za-z\s]+(?:Watch|Model)?)/;
 let itemQtyPattern = /^([1-9][0-9]*|0)(\.[0-9]+)?$/;
@@ -21,10 +26,20 @@ function loadItems() {
     });
 }
 
+function nextId() {
+    if (item_db.length === 0) return "I001";
+
+    let lastItemID = item_db[item_db.length - 1].itemId;
+    let number = parseInt(lastItemID.slice(1), 10);
+    let nextNumber = number + 1;
+    return "I" + nextNumber.toString().padStart(3, '0');
+}
+
+
 // ============================Item Saved ========================
 
 $('#item-Save').on('click', function(){
-    let itemId = $('#itemId').val();
+    let itemId = nextId();
     let itemName = $('#item-name').val();
     let itemPrice = $('#item-price').val();
     let itemQty = $('#item-qty').val();
@@ -91,12 +106,13 @@ $('#item-Save').on('click', function(){
 
 $("#itemClear").on('click',function (){
     clear();
+    nextId()
 })
 
 // ==================clear=========================
 
 function clear() {
-    $('#itemId').val('');
+    $('#itemId').val(nextId());
     $('#item-name').val('');
     $('#item-price').val('');
     $('#item-qty').val('');
