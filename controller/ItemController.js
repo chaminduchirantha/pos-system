@@ -128,6 +128,36 @@ $('#itemUpdate').on("click", function(){
     let itemQty = $('#item-qty').val();
     console.log(`itemId: ${itemId} ,itemName: ${itemName}, itemPrice: ${itemPrice}, itemQty: ${itemQty}`);
 
+
+    if(!itemNamePattern.test(itemName)){
+        Swal.fire({
+            title: 'Error!',
+            text: 'Invalid Item Name Pattern',
+            icon: 'error',
+            confirmButtonText: 'Ok'
+        })
+        return;
+    }
+    if(!itemQtyPattern.test(itemQty)){
+        Swal.fire({
+            title: 'Error!',
+            text: 'Invalid Item Qty Pattern',
+            icon: 'error',
+            confirmButtonText: 'Ok'
+        })
+        return;
+    }
+
+    if(!itemPricePattern.test(itemPrice)){
+        Swal.fire({
+            title: 'Error!',
+            text: 'Invalid Item price Pattern',
+            icon: 'error',
+            confirmButtonText: 'Ok'
+        })
+        return;
+    }
+
     if(itemId === ''|| itemName === '' || itemPrice === '' || itemQty === '' ) {
 
         Swal.fire({
