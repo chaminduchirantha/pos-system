@@ -1,6 +1,10 @@
 import {item_db} from "../db/db.js";
 import ItemModel from "../model/ItemModel.js";
 
+let itemNamePattern = /([A-Za-z\s]+(?:Watch|Model)?)/;
+let itemQtyPattern = /^([1-9][0-9]*|0)(\.[0-9]+)?$/;
+let itemPricePattern = /^\d+(\.\d{2})?$/;
+
 // =====================load Table====================
 
 function loadItems() {
@@ -26,12 +30,41 @@ $('#item-Save').on('click', function(){
     let itemQty = $('#item-qty').val();
     console.log(`itemId: ${itemId} ,itemName: ${itemName}, itemPrice: ${itemPrice}, itemQty: ${itemQty}`);
 
+    if(!itemNamePattern.test(itemName)){
+        Swal.fire({
+            title: 'Error!',
+            text: 'Invalid Item Name Pattern',
+            icon: 'error',
+            confirmButtonText: 'Ok'
+        })
+        return;
+    }
+     if(!itemQtyPattern.test(itemQty)){
+            Swal.fire({
+                title: 'Error!',
+                text: 'Invalid Item Qty Pattern',
+                icon: 'error',
+                confirmButtonText: 'Ok'
+            })
+         return;
+        }
+
+     if(!itemPricePattern.test(itemPrice)){
+            Swal.fire({
+                title: 'Error!',
+                text: 'Invalid Item price Pattern',
+                icon: 'error',
+                confirmButtonText: 'Ok'
+            })
+         return;
+        }
+
 
     if(itemId === ''|| itemName === '' || itemPrice === '' || itemQty === '' ) {
 
         Swal.fire({
             title: 'Error!',
-            text: 'Invalid Inputs',
+            text: 'Please fill the input Fields',
             icon: 'error',
             confirmButtonText: 'Ok'
         })
