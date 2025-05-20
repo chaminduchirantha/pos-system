@@ -3,7 +3,8 @@ export default class OrderDetailsModel {
         this._OrderId = OrderId;
         this._Date = Date;
         this._cusFName = cusFName;
-        this._cusLName = cusLName;        this._ItemName = ItemName;
+        this._cusLName = cusLName;
+        this._ItemName = ItemName;
         this._Price = Price;
         this._OrderQty = OrderQty;
         this._SubTotal = SubTotal;

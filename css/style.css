@@ -9,28 +9,6 @@ body{
     background-color: rgba(17, 31, 46, 0.91);
 }
 
-.custom-header{
-    font-size: 3rem;
-}
-
-.custom-home-card{
-    border: none;
-    background-color: rgba(17, 31, 46, 0);
-    color: wheat;
-
-}
-
-.custom-paragraph{
-    font-size: 1.7em;
-}
-
-.custom-image{
-    border-radius: 50%;
-    position: absolute;
-    right: 150px;
-    top: 180px;
-}
-
 .bar{
     width: 100%;
     height: 50px;

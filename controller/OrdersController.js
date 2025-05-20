@@ -5,6 +5,11 @@ import OrdersModel from "../model/OrdersModel.js";
 let cart_db =[]
 let CartSubTotal = 0;
 
+$(document).ready(function() {
+    generateOrderId();
+});
+
+
 $('#cmbCustomerId').change(function () {
     var selectedValue = $(this).val();
     customer_db.map(function (Customer) {
@@ -27,6 +32,46 @@ $('#cmbItemCode').change(function () {
         }
     });
 });
+
+function generateOrderId(){
+    let lastOrderId = $("#orderId").val();
+
+    if (!lastOrderId) {
+        lastOrderId = "O001";
+    }
+
+    let number = parseInt(lastOrderId.substring(2)) + 1;
+    let newOrderId = "O" + number.toString().padStart(3, "0");
+
+    $("#orderId").val(newOrderId);
+}
+
+
+// function nextId() {
+//     if (order_db.length === 0) return "O001";
+//
+//     let lastOrderId = order_db[order_db.length - 1].orderId
+//     let number = parseInt(lastOrderId.slice(1), 10);
+//     let nextNumber = number + 1;
+//     return "O" + nextNumber.toString().padStart(3, '0');
+// }
+//
+// export function resetOrderForm() {
+//     cart_db = [];
+//     // it = 0;
+//
+//     $('#orderId').val(nextId());
+//     $('#orderDate, #custFName, #custLname, #custAddress, #orderItemQty, #orderItemPrice,#orderItemName').val('');
+//     $('#order-customer').prop('selectedIndex', 0);
+//     $('#discount').val('');
+//     $('#total').val('');
+//     $('#subTotal').val('');
+//
+// }
+//
+// $('#reset').on('click', function() {
+//     resetOrderForm();
+// })
 
 
 let subTotal = 0;
@@ -64,6 +109,7 @@ $('#addToCard').on('click', function () {
         if(item_db[i].itemCode === itemCode) {
             item_db[i].qty -= ordersQty;
             break;
+            updateItemTable();
         }
     }
 
@@ -84,7 +130,6 @@ $('#addToCard').on('click', function () {
         `);
 
     calculateTotal();
-    updateItemTable();
 
     Swal.fire({
         icon: 'success',
@@ -96,10 +141,8 @@ $('#addToCard').on('click', function () {
 $('#cart-tBody').on('click', '.remove-cart-item', function () {
     let index = $(this).data('index');
 
-    // Remove from cart_db
     cart_db.splice(index, 1);
 
-    // Re-render cart
     $('#cart-tBody').empty();
     cart_db.forEach((item, i) => {
         $('#cart-tBody').append(`
@@ -213,4 +256,37 @@ $('#purchase').click(function () {
             <td>${total}</td>
         </tr>
     `);
+});
+
+
+function searchOderById(orderId) {
+    let order = order_db.find(o => o._orderId === orderId);
+
+    if (!order) {
+        Swal.fire({
+            title: "Not Found!",
+            text: "No Order found with ID: " + orderId,
+            icon: "warning"
+        });
+        return;
+    }
+}
+
+
+$('#searchOrderButton').on('click', function () {
+    let searchId = $('#searchOrderId').val().trim();
+    if (searchId === '') {
+        Swal.fire({
+            title: "Order Is Not Found",
+            text: "Unsuccessful Customer Search",
+            icon: "error"
+        });
+    } else {
+        Swal.fire({
+            title: "Order is Find",
+            text: "Successfully Customer Search",
+            icon: "success"
+        });
+        searchOderById(searchId);
+    }
 });
