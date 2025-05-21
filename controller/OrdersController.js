@@ -6,7 +6,7 @@ let cart_db =[]
 let CartSubTotal = 0;
 
 $(document).ready(function() {
-    generateOrderId();
+    clearCart();
 });
 
 
@@ -33,46 +33,14 @@ $('#cmbItemCode').change(function () {
     });
 });
 
-function generateOrderId(){
-    let lastOrderId = $("#orderId").val();
+function nextId() {
+    if (order_db.length === 0) return "O001";
 
-    if (!lastOrderId) {
-        lastOrderId = "O001";
-    }
-
-    let number = parseInt(lastOrderId.substring(2)) + 1;
-    let newOrderId = "O" + number.toString().padStart(3, "0");
-
-    $("#orderId").val(newOrderId);
+    let lastOrderId = order_db[order_db.length - 1].orderId;
+    let number = parseInt(lastOrderId.slice(1), 10);
+    let nextNumber = number + 1;
+    return "O" + nextNumber.toString().padStart(3, '0');
 }
-
-
-// function nextId() {
-//     if (order_db.length === 0) return "O001";
-//
-//     let lastOrderId = order_db[order_db.length - 1].orderId
-//     let number = parseInt(lastOrderId.slice(1), 10);
-//     let nextNumber = number + 1;
-//     return "O" + nextNumber.toString().padStart(3, '0');
-// }
-//
-// export function resetOrderForm() {
-//     cart_db = [];
-//     // it = 0;
-//
-//     $('#orderId').val(nextId());
-//     $('#orderDate, #custFName, #custLname, #custAddress, #orderItemQty, #orderItemPrice,#orderItemName').val('');
-//     $('#order-customer').prop('selectedIndex', 0);
-//     $('#discount').val('');
-//     $('#total').val('');
-//     $('#subTotal').val('');
-//
-// }
-//
-// $('#reset').on('click', function() {
-//     resetOrderForm();
-// })
-
 
 let subTotal = 0;
 let discountRate = 0;
@@ -80,54 +48,59 @@ let discount = 0;
 let total = 0;
 
 $('#addToCard').on('click', function () {
-    let itemCode = $('#cmbItemCode').val();
-    let orderItemName = $('#orderItemName').val();
-    let orderItemPrice = parseFloat($('#orderItemPrice').val());
-    let orderItemQty = parseInt($('#orderItemQty').val());
-    let ordersQty = parseInt($('#ordersQty').val());
-    let total = $(`#subTotal`).val();
+    let itemId = $('#cmbItemCode').val();
+    let itemName = $('#orderItemName').val();
+    let itemPrice = parseFloat($('#orderItemPrice').val());
+    let itemStock = parseInt($('#orderItemQty').val());
+    let orderedQty = parseInt($('#ordersQty').val());
 
-
-
-    if(!itemCode || !orderItemName || !orderItemPrice || !orderItemQty  || !total) {
+    if (!itemId || !itemName || isNaN(itemPrice) || isNaN(itemStock) || isNaN(orderedQty)) {
         Swal.fire({
             icon: 'error',
             title: 'Validation Error',
-            text: 'Please ensure all fields are filled out correctly.',
+            text: 'Please fill in all fields correctly.',
         });
+        return;
     }
-    if(ordersQty > orderItemQty) {
+
+    if (orderedQty > itemStock) {
         Swal.fire({
             icon: 'warning',
             title: 'Quantity Unavailable',
             text: "Not enough quantity available.",
         });
+        return;
     }
-    total = orderItemPrice* ordersQty;
 
-    for(let i = 0; i <item_db.length; i++) {
-        if(item_db[i].itemCode === itemCode) {
-            item_db[i].qty -= ordersQty;
+    let total = itemPrice * orderedQty;
+
+    for (let i = 0; i < item_db.length; i++) {
+        if (item_db[i].itemId === itemId) {
+            item_db[i].itemQuantity -= orderedQty;
             break;
-            updateItemTable();
         }
     }
 
-    cart_db.push({ itemCode: itemCode, itemName: orderItemName, itemQty: orderItemQty, itemPrice: orderItemPrice, total: total });
+    cart_db.push({
+        itemId,
+        itemName,
+        orderedQty,
+        itemPrice,
+        total
+    });
 
     let index = cart_db.length - 1;
 
     $('#cart-tBody').append(`
-
-             <tr data-index="${index}">
-               <td>${itemCode}</td>
-                <td>${orderItemName}</td>
-                <td>${orderItemPrice.toFixed(2)}</td>
-                <td>${ordersQty}</td>
-                <td>${total}</td>
-                <td><button class="btn btn-danger btn-sm remove-cart-item" data-index="${index}">Remove</button></td>
-           </tr>
-        `);
+        <tr data-index="${index}">
+            <td>${itemId}</td>
+            <td>${itemName}</td>
+            <td>${itemPrice.toFixed(2)}</td>
+            <td>${orderedQty}</td>
+            <td>${total.toFixed(2)}</td>
+            <td><button class="btn btn-danger btn-sm remove-cart-item" data-index="${index}">Remove</button></td>
+        </tr>
+    `);
 
     calculateTotal();
 
@@ -136,7 +109,9 @@ $('#addToCard').on('click', function () {
         title: 'Item Added',
         text: 'Item successfully added to cart.',
     });
-})
+});
+
+
 
 $('#cart-tBody').on('click', '.remove-cart-item', function () {
     let index = $(this).data('index');
@@ -211,52 +186,66 @@ const updateItemTable = () => {
 }
 
 $('#purchase').click(function () {
-    let orderId = $('#orderId').val();
-    let customerId = $('#cmbCustomerId').val();
-    let date = $('#orderDate').val();
-    let ordersQty = $('#ordersQty').val();
-    let amount = Number($('#subTotal').val());
+    let orderId = nextId();
+    let orderDate = $('#orderDate').val();
+    let cusId = $('#cmbCustomerId').val();
+    let orderQty = $('#ordersQty').val();
+    let discountRate = parseFloat($('#rate').val()) || 0;
+    let total = parseFloat(CartSubTotal) || 0;
 
-    console.log(orderId , customerId , date , ordersQty , amount)
+    let order = {
+        orderId,
+        orderDate,
+        customerId: cusId,
+        orderQty,
+        discountRate,
+        cart: [...cart_db],
+        total
+    };
 
-    if (!customerId || cart_db.length === 0 || isNaN(amount) || amount < 0) {
-        Swal.fire({
-            title: 'Warning!',
-            html: 'Please check: add to cart table',
-            icon: 'warning'
-        });
-        return;
-    }
-
-
-    order_db.push({
-        orderId: Number(orderId),
-        date: date,
-        customerId: customerId,
-        ordersQty: ordersQty,
-        total: amount,
-    });
-
+    order_db.push(order);
 
     Swal.fire({
-        title: 'Order Saved!',
-        showCancelButton: true,
-        confirmButtonText: 'Yes',
-        cancelButtonText: 'No'
-    })
+        icon: 'success',
+        title: 'Order Placed!',
+        text: 'The order has been successfully placed.',
+    });
 
-
-    const orderDetail = $('#OrderDetails-tbody');
-    orderDetail .append(`
-        <tr>
-            <td>${orderId}</td>
-            <td>${date}</td>
-            <td>${customerId}</td>
-            <td>${ordersQty}</td>
-            <td>${total}</td>
-        </tr>
-    `);
+    loadOrderData();
+    clearCart();
 });
+
+function loadOrderData() {
+    $('#OrderDetails-tbody').empty();
+
+    order_db.forEach((order, index) => {
+        $('#OrderDetails-tbody').append(`
+            <tr>
+                <td>${order.orderId}</td>
+                <td>${order.orderDate}</td>
+                <td>${order.customerId}</td>
+                <td>${order.orderQty}</td>
+                <td>${order.discountRate}%</td>
+                <td>${order.total.toFixed(2)}</td>
+            </tr>
+        `);
+    });
+}
+
+function clearCart() {
+    cart_db = [];
+    $('#orderId').val(nextId());
+    $('#cart-tBody').empty();
+    $('#subTotal').text("Sub Total : 0.00");
+    $('#discount').text("Discount : 0.00");
+    $('#total').text("Total : 0.00");
+    $('#cash').val('');
+    $('#balance').text("Balance : 0.00");
+    CartSubTotal = 0;
+}
+
+
+
 
 
 function searchOderById(orderId) {
