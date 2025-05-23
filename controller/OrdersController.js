@@ -57,7 +57,7 @@ $('#addToCard').on('click', function () {
     if (!itemId || !itemName || isNaN(itemPrice) || isNaN(itemStock) || isNaN(orderedQty)) {
         Swal.fire({
             icon: 'error',
-            title: 'Validation Error',
+            title: 'Checking Inputs',
             text: 'Please fill in all fields correctly.',
         });
         return;
@@ -192,6 +192,15 @@ $('#purchase').click(function () {
     let orderQty = $('#ordersQty').val();
     let discountRate = parseFloat($('#rate').val()) || 0;
     let total = parseFloat(CartSubTotal) || 0;
+    //
+    // if (!orderId || !orderDate || isNaN(cusId) || isNaN(orderQty) || isNaN(discountRate) || isNaN(total)) {
+    //     Swal.fire({
+    //         icon: 'error',
+    //         title: 'Checking Inputs',
+    //         text: 'Please fill in all fields correctly.',
+    //     });
+    //     return;
+    // }
 
     let order = {
         orderId,
@@ -243,39 +252,3 @@ function clearCart() {
     $('#balance').text("Balance : 0.00");
     CartSubTotal = 0;
 }
-
-
-
-
-
-function searchOderById(orderId) {
-    let order = order_db.find(o => o._orderId === orderId);
-
-    if (!order) {
-        Swal.fire({
-            title: "Not Found!",
-            text: "No Order found with ID: " + orderId,
-            icon: "warning"
-        });
-        return;
-    }
-}
-
-
-$('#searchOrderButton').on('click', function () {
-    let searchId = $('#searchOrderId').val().trim();
-    if (searchId === '') {
-        Swal.fire({
-            title: "Order Is Not Found",
-            text: "Unsuccessful Customer Search",
-            icon: "error"
-        });
-    } else {
-        Swal.fire({
-            title: "Order is Find",
-            text: "Successfully Customer Search",
-            icon: "success"
-        });
-        searchOderById(searchId);
-    }
-});
